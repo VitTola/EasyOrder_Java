@@ -1,11 +1,9 @@
 package com.tola.easy_orders;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,13 +25,12 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnRegister = findViewById(R.id.btnRegisterTo);
         auth = FirebaseAuth.getInstance();
-
-
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,13 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String text_email = etEmail.getText().toString();
                 String text_password = etPassword.getText().toString();
 
-                if(TextUtils.isEmpty(text_email) || TextUtils.isEmpty(text_password)){
-                    Toast.makeText(RegisterActivity.this,"Empty credentails!", Toast.LENGTH_SHORT).show();
-                }else if(text_password.length() < 6){
-                    Toast.makeText(RegisterActivity.this,"Password is too short!", Toast.LENGTH_SHORT).show();
-                }else{
-                    registerUser(text_email, text_password);
+                if(!ValidateControls.ValidateEamil(etEmail) | !ValidateControls.ValidatePassword(etPassword)){
+                    return;
                 }
+                    registerUser(text_email, text_password);
             }
 
             private void registerUser(String text_email, String text_password) {

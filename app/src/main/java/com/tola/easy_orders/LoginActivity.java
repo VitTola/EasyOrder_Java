@@ -18,17 +18,25 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private Button login;
+    private Button register;
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         email = findViewById(R.id.login_etEmail);
         password = findViewById(R.id.login_etPassword);
         login = findViewById(R.id.login_btnLogin);
+        register = findViewById(R.id.login_btnRegister);
         auth = FirebaseAuth.getInstance();
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
