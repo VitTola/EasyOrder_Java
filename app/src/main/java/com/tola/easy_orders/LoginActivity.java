@@ -43,6 +43,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String text_email = email.getText().toString();
                 String text_password = password.getText().toString();
+                if(text_email.isEmpty()){
+                    email.setError("Please enter email address!");
+                    return;
+                }
+                else if(text_password.isEmpty()){
+                    password.setError("Please enter password!");
+                    return;
+                }
+
                 logInUser(text_email,text_password);
             }
 
@@ -51,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         Toast.makeText(LoginActivity.this,"Login successful!",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, MainDisplayActivity.class));
                         finish();
                     }
                 });
