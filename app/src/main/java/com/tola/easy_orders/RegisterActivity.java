@@ -50,8 +50,8 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    Toast.makeText(RegisterActivity.this, "Registering user successful!",Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(RegisterActivity.this, MainDisplayActivity.class));
+                                   // Toast.makeText(RegisterActivity.this, "Registering user successful!",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                                     finish();
                                 }
                                 else{

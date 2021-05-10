@@ -1,9 +1,10 @@
 package com.tola.easy_orders.Models;
 
 public class Products {
-    private String pname, description, price, image, category, pid, date, time;
+    private String pname, description, price, category, pid, date, time;
+    private  int image;
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time) {
+    public Products(String pname, String description, String price, int image, String category, String pid, String date, String time) {
         this.pname = pname;
         this.description = description;
         this.price = price;
@@ -42,11 +43,11 @@ public class Products {
         this.price = price;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 
